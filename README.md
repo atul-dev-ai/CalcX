@@ -96,5 +96,5 @@ Contributions are welcome! If you want to add features:
 This project is open-source and available under the MIT License.
 
 <div align="center">
-Made with a keyboard ⌨️ and lots of ☕ by <b>[Your Name]</b>
+Made with a keyboard ⌨️ and lots of ☕ by <b> Atul Paul </b>
 </div>
