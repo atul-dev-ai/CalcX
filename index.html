@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcX - Fixed Version</title>
+
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link rel="stylesheet" href="src/output.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #020617;
+      /* Darker Slate */
+      color: white;
+    }
+
+    /* Improved Glass Effect - Lighter and Clearer */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.05);
+      /* Lighter background */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .calc-btn {
+      transition: all 0.2s;
+    }
+
+    .calc-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Simple CSS Animation (No JS Risk) */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-entry {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Stagger delays via CSS */
+    .delay-100 {
+      animation-delay: 100ms;
+    }
+
+    .delay-200 {
+      animation-delay: 200ms;
+    }
+
+    .delay-300 {
+      animation-delay: 300ms;
+    }
+
+    /* Blob Animation */
+    @keyframes blob {
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+    }
+
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden selection:bg-cyan-500 selection:text-white">
+
+  <div class="fixed inset-0 z-[-1]">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[100px] animate-blob"></div>
+    <div
+      class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-600/30 rounded-full blur-[100px] animate-blob animation-delay-2000">
+    </div>
+  </div>
+
+  <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-[#020617]/80 backdrop-blur-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold flex items-center gap-2">
+        <span class="w-8 h-8 bg-gradient-to-r from-cyan-600 to-purple-700 rounded flex items-center justify-center text-white text-sm">
+          <i class="fa-solid fa-calculator"></i>
+        </span>
+        <span>Calc <span class="bg-gradient-to-r from-cyan-600 to-purple-700 bg-clip-text text-transparent ">X</span></span>
+      </a>
+      <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+        <a href="#" class="hover:text-cyan-400 transition font-bold">Home</a>
+        <a href="#" class="hover:text-cyan-400 transition font-bold">Features</a>
+        <a href="#" class="hover:text-cyan-400 transition font-bold">Contact</a>
+      </div>
+      <button class="bg-gradient-to-r from-cyan-600 to-purple-700 cursor-pointer px-6 py-2 rounded-full text-sm font-bold transition">Sign In</button>
+    </div>
+  </nav>
+
+  <section class="min-h-screen flex items-center pt-24 pb-10">
+    <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="animate-entry text-center lg:text-left">
+        <div
+          class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-widest bg-gradient-to-r from-pink-400 to-purple-700 bg-clip-text text-transparent border border-cyan-500/40 rounded-full bg-cyan-500/40">
+          V 2.0 STABLE
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+          Math Made <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-800 to-purple-800">Simple &
+            Visual</span>
+        </h1>
+        <p class="text-slate-400 text-lg mb-8 max-w-lg mx-auto lg:mx-0">
+          No clutter, just calculation. A reliable tool for your daily needs with a modern aesthetic.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <button
+            class="bg-gradient-to-r from-cyan-700 to-purple-700 text-white px-8 py-3 rounded-xl font-bold transition shadow-lg shadow-cyan-500/25 cursor-pointer">Start
+            Now</button>
+          <button class="border border-slate-700 hover:bg-slate-800 px-8 py-3 rounded-xl font-bold transition cursor-pointer">Learn
+            More</button>
+        </div>
+      </div>
+
+      <div class="flex justify-center animate-entry delay-200">
+        <div class="glass-panel p-6 rounded-3xl w-full max-w-[350px]">
+
+          <div class="mb-5 bg-black/40 rounded-2xl p-4 border border-white/5">
+            <div class="text-right text-xs text-slate-400 h-5" id="history"></div>
+            <input type="text" id="display" readonly
+              class="w-full bg-transparent text-right text-4xl text-white outline-none placeholder-slate-600 font-mono"
+              placeholder="0">
+          </div>
+
+          <div class="grid grid-cols-4 gap-3">
+            <button onclick="clearDisplay()"
+              class="calc-btn h-14 rounded-xl font-bold text-red-400 bg-red-500/10 hover:bg-red-500/20 cursor-pointer">AC</button>
+            <button onclick="deleteLast()"
+              class="calc-btn h-14 rounded-xl font-bold text-yellow-400 bg-yellow-500/10 hover:bg-yellow-500/20 cursor-pointer"><i
+                class="fa-solid fa-delete-left"></i></button>
+            <button onclick="appendToDisplay('%')"
+              class="calc-btn h-14 rounded-xl font-bold text-cyan-400 bg-slate-700/50 hover:bg-slate-600 cursor-pointer">%</button>
+            <button onclick="appendToDisplay('/')"
+              class="calc-btn h-14 rounded-xl font-bold text-cyan-400 bg-slate-700/50 hover:bg-slate-600 cursor-pointer">÷</button>
+
+            <button onclick="appendToDisplay('7')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">7</button>
+            <button onclick="appendToDisplay('8')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">8</button>
+            <button onclick="appendToDisplay('9')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">9</button>
+            <button onclick="appendToDisplay('*')"
+              class="calc-btn h-14 rounded-xl font-bold text-cyan-400 bg-slate-700/50 hover:bg-slate-600 cursor-pointer">×</button>
+
+            <button onclick="appendToDisplay('4')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">4</button>
+            <button onclick="appendToDisplay('5')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">5</button>
+            <button onclick="appendToDisplay('6')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">6</button>
+            <button onclick="appendToDisplay('-')"
+              class="calc-btn h-14 rounded-xl font-bold text-cyan-400 bg-slate-700/50 hover:bg-slate-600 cursor-pointer">-</button>
+
+            <button onclick="appendToDisplay('1')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">1</button>
+            <button onclick="appendToDisplay('2')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">2</button>
+            <button onclick="appendToDisplay('3')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">3</button>
+            <button onclick="appendToDisplay('+')"
+              class="calc-btn h-14 rounded-xl font-bold text-cyan-400 bg-slate-700/50 hover:bg-slate-600 cursor-pointer">+</button>
+
+            <button onclick="appendToDisplay('0')"
+              class="calc-btn col-span-2 h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">0</button>
+            <button onclick="appendToDisplay('.')"
+              class="calc-btn h-14 rounded-xl font-bold bg-slate-800/50 hover:bg-slate-700 cursor-pointer">.</button>
+            <button onclick="calculate()"
+              class="calc-btn h-14 rounded-xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 shadow-lg shadow-cyan-500/30 cursor-pointer">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-[#020617] pt-16 pb-8 border-t border-white/10 relative overflow-hidden">
+
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+        <div>
+          <a href="#" class="text-2xl font-bold flex items-center gap-2 mb-4">
+            <span
+              class="w-8 h-8 bg-gradient-to-tr bg-gradient-to-r from-cyan-600 to-purple-700 rounded flex items-center justify-center text-white text-sm shadow-lg shadow-cyan-500/20">
+              <i class="fa-solid fa-calculator"></i>
+            </span>
+            <span class="text-white">Calc<span class="bg-gradient-to-r from-cyan-600 to-purple-700 bg-clip-text text-transparent">X</span></span>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            A simple, fast, and beautiful calculator for your daily needs. Designed with precision and modern web
+            technologies.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/atulkumar.paul.71" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all duration-300">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://x.com/paulatul020" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all duration-300">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="https://github.com/atul-dev-ai" target="_blank"
+              class="w-10 h-10 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-400 hover:bg-cyan-500 hover:text-white hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all duration-300">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-6">Product</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Features</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Integrations</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Pricing</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-6">Resources</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Documentation</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">API Reference</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Community</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Help Center</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-6">Stay Updated</h3>
+          <p class="text-slate-400 text-sm mb-4">Subscribe to our newsletter for the latest updates.</p>
+          <form class="flex flex-col gap-3">
+            <input type="email" placeholder="Enter your email"
+              class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:border-cyan-500 text-sm text-white placeholder-slate-500 transition-colors">
+            <button type="button"
+              class="w-full px-4 py-3 bg-gradient-to-r from-cyan-700 to-purple-700 text-white rounded-lg font-semibold text-sm transition-all shadow-lg shadow-cyan-900/20 cursor-pointer">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-800/60 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-slate-500 text-sm">
+          &copy; 2024 CalcX Inc. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6 text-sm text-slate-500">
+          <a href="#" class="hover:text-white transition">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition">Terms of Service</a>
+          <span class="flex items-center gap-1">
+            Made with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> by <a href="https://atulpaul.vercel.app" class="font-bold text-lg bg-gradient-to-r from-pink-400 to-purple-700 via-emerald-700 bg-clip-text text-transparent cursor-pointer" target="_blank">Atul Paul</a> 
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- SAFE JAVASCRIPT LOGIC ---
+    const display = document.getElementById('display');
+    const historyDisplay = document.getElementById('history');
+
+    function appendToDisplay(input) {
+      // Prevent invalid sequences
+      const lastChar = display.value.slice(-1);
+      if (['+', '-', '*', '/', '%'].includes(lastChar) && ['+', '-', '*', '/', '%'].includes(input)) {
+        display.value = display.value.slice(0, -1) + input; // Replace operator
+        return;
+      }
+      display.value += input;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+      historyDisplay.innerText = "";
+    }
+
+    function deleteLast() {
+      display.value = display.value.toString().slice(0, -1);
+    }
+
+    function calculate() {
+      try {
+        if (display.value === "") return;
+        historyDisplay.innerText = display.value;
+
+        // Safer evaluation using Function constructor instead of direct eval (best practice for simple apps)
+        const result = new Function('return ' + display.value)();
+
+        // Handle formatting
+        display.value = Number.isInteger(result) ? result : result.toFixed(2);
+      } catch (error) {
+        display.value = "Error";
+        setTimeout(clearDisplay, 1000);
+      }
+    }
+  </script>
+</body>
+
+</html>
